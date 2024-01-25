@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class HospitalManagementSystem {
+
+    private List<Patient> patientList;
+
+    public HospitalManagementSystem() {
+        this.patientList = new ArrayList<>();
+    }
+
+    public void admitPatient(Patient patient) {
+        patientList.add(patient);
+        System.out.println("Patient " + patient.getName() + " admitted to the hospital.");
+    }
+
+    public void dischargePatient(Patient patient) {
+        if (patientList.contains(patient)) {
+            patientList.remove(patient);
+            System.out.println("Patient " + patient.getName() + " discharged from the hospital.");
+        } else {
+            System.out.println("Patient " + patient.getName() + " is not currently admitted to the hospital.");
+        }
+    }
+
+    public static void main(String[] args) {
+        HospitalManagementSystem hospital = new HospitalManagementSystem();
+
+        Patient patient1 = new Patient("John", 25);
+        Patient patient2 = new Patient("Emily", 30);
+
+        hospital.admitPatient(patient1);
+        hospital.admitPatient(patient2);
+
+        hospital.dischargePatient(patient1);
+    }
+}
+
+class Patient {
+    private String name;
+    private int age;
+
+    public Patient(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
